@@ -1,0 +1,9 @@
+{
+    pages_dir   => app->home->rel_dir('pages'),
+    dump_dir    => app->home->rel_dir('dump'),
+    name        => 'Nuclear Matter programme',
+    copyright   => 'Zaphod Beeblebrox',
+    cached      => 0,
+    perldoc     => 0,
+
+}

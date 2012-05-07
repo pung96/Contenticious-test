@@ -1,0 +1,25 @@
+%# my $node      = $content_node;
+% my $node      = contenticious->root_node;
+% my @names     = split m|/| => $content_node->path;
+% my $level     = 1;
+% my @queue     = ( [ $node, 0 ] );
+% while( @queue ){
+    % my $c = '';
+    % ($c,$level) = @{pop @queue};
+    % unless ( $c ){ 
+        </ul>
+        % next;
+    % }
+    % next if( $c->name =~ /^_/ );
+    % if( $level != 0 and $c->name ne 'index'){
+    % my $class   = $c->name eq $content_node->name ? 'active' : '';
+    % my $url = url_for 'content', cpath => $c->path, format => 'html';
+    <li class="<%= $class %>"><a href="<%= $url %>"><%= $c->navi_name %></a></li>
+    % }
+    %# if( $c->can('children') ){
+    % if( $c->can('children') and  ( $level == 0 || $names[$level-1] eq $c->name )  ){
+        % push @queue, map{ [$_,$level+1] } undef,reverse @{$c->children};
+        % my $class_ul = " nav-list";
+        <ul class="nav <%=$class_ul%> level<%=$level%>">
+    % }
+% }
