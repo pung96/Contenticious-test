@@ -12,6 +12,7 @@
         % foreach my $c (@{$node->children}) {
             % next if $c->name eq 'index';
             % next if $c->name =~ /^_/;
+            % next if $c->name =~ /^test/;
             % my $class   = $c->name eq $name ? 'active' : '';
             % my $url = url_for 'content', cpath => $c->path, format => 'html';
         <li class="<%= $class %>">

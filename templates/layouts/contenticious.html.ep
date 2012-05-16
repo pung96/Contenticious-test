@@ -23,6 +23,9 @@
       }
     </style>
     <%= stylesheet 'css/bootstrap-responsive.min.css' %>
+    %# TOOL TIP
+    %#= javascript 'js/bootstrap-tooltip.js'
+    %# Code Highlighter
     %= javascript 'syntax/scripts/shCore.js'
     %= javascript 'syntax/scripts/shBrushPerl.js'
     %= javascript 'syntax/scripts/shBrushBash.js'

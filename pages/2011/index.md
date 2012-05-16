@@ -16,7 +16,7 @@ navi_name: 2011
 </div>
 </br>
 <div class="row">
-<div class="span2 well lotusbox"><a href="2011/1.html">1</a></div>
+<div class="span2 well lotusbox"><a rel="first day, 아직 없음" href="2011/1.html">1</a></div>
 <div class="span2 well lotusbox">2</div>
 <div class="span2 well lotusbox">3</div>
 <div class="span2 well lotusbox">4</div>
