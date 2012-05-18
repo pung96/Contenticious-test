@@ -1,7 +1,7 @@
 {
     pages_dir   => app->home->rel_dir('pages'),
     dump_dir    => app->home->rel_dir('dump'),
-    name        => 'LOTUS Seoul.pm',
+    name        => 'PERL.KR LOTUS Calendar',
     copyright   => 'pung96',
     cached      => 0,
     perldoc     => 0,
