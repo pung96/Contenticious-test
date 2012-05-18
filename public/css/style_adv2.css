@@ -1,8 +1,8 @@
 * {
-    padding: 0;
-    margin: 0;
+    //padding: 0;
+    //margin: 0;
     color: white;
-    border: 0;
+    //border: 0;
     font-family:'Nanum Gothic',나눔고딕,'Malgun Gothic',맑은고딕,UnDotum,Dotum,Arial,Sans;
   }
 pre, code {
@@ -10,8 +10,8 @@ pre, code {
 }
 body {
     //background: url(bg.gif) repeat-x scroll 0 0 #1a1a1a;
-    width:100%;
-    text-align:left;
+    //width:100%;
+    //text-align:left;
 }
 #wrapper.flu {
     max-width: 990px;
@@ -116,12 +116,26 @@ body {
 .calendar table td a{display:block;width:70px;padding:12px 0 12px; text-align:center;letter-spacing:-1px;}
 
 
+.sidebar-nav {
+  margin-right:10px;
+}
+.dsq-combo-box {
+  color:black;
+}
+#dsq-combo-widget a {
+  color:black;
+}
+#dsq-combo-widget p {
+  color:black;
+}
 #content {
     margin-top: 30px;
-    margin-left:30px;
+  margin-left:10px;
 }
 #content h1 { margin-bottom: 30px }
-#content h2, #content h3, #content h4, #content h5, #content h6 { line-height: 250%; }
+#content h2, #content h3, #content h4, #content h5, #content h6 { line-height: 250%; 
+  color:yellow;
+}
 #content a {
     color: orange;
     font-weight: bold;
