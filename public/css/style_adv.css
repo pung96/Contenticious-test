@@ -174,27 +174,7 @@ body {
 #docmeta {
     display: none;
 }
-.nav {
-    margin-left: 44px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.nav ul {
-  list-style:none outside none;
-}
-.nav li {
-    float: left;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.nav a {
-    color: yellow;
-    font-weight: bold;
-    text-decoration: none !important; 
-}
-.nav a:hover {
-    text-decoration: underline !important;
-}
+
 #sponsor {
     position: relative;
     margin-top: 10px;

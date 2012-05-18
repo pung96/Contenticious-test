@@ -9,7 +9,7 @@ pre, code {
     font-family: Monospace;
 }
 body {
-    background: url(bg.gif) repeat-x scroll 0 0 #1a1a1a;
+    //background: url(bg.gif) repeat-x scroll 0 0 #1a1a1a;
     width:100%;
     text-align:left;
 }
@@ -114,8 +114,11 @@ body {
 .calendar table td.selectable a{border:#aaa solid 2px;color:#ccc;font-weight: bold;}
 .calendar table td.today a{background:#3a3a4a;color:yellow}
 .calendar table td a{display:block;width:70px;padding:12px 0 12px; text-align:center;letter-spacing:-1px;}
+
+
 #content {
     margin-top: 30px;
+    margin-left:30px;
 }
 #content h1 { margin-bottom: 30px }
 #content h2, #content h3, #content h4, #content h5, #content h6 { line-height: 250%; }
@@ -175,27 +178,6 @@ body {
 }
 #contentmeta {
     display: none;
-}
-.nav {
-    margin-left: 44px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.nav ul {
-  list-style:none outside none;
-}
-.nav li {
-    float: left;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.nav a {
-    color: yellow;
-    font-weight: bold;
-    text-decoration: none !important; 
-}
-.nav a:hover {
-    text-decoration: underline !important;
 }
 #sponsor {
     position: relative;
