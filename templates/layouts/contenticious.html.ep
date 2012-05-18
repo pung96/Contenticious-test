@@ -15,14 +15,11 @@
         padding-bottom: 40px;
       }
       .sidebar-nav {
-        padding: 9px 0;
-      }
-      #content p{
-        font-size:20px;
-        line-height:25px;
+        //padding: 9px 0;
       }
     </style>
     <%= stylesheet 'css/bootstrap-responsive.min.css' %>
+    %= stylesheet 'css/style.css'
     %# TOOL TIP
     %#= javascript 'js/bootstrap-tooltip.js'
     %# Code Highlighter

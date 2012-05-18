@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="http://advent.perl.kr/2010/style.css" />
+<link rel="stylesheet" type="text/css" href="https://raw.github.com/clownfart/Markdown-CSS/master/markdown.css" />
 
 첫째날 : 펄을 이용한 그림 파일 긁어오기.
 ===========================================

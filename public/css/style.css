@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: black;
+    border: 0;
+    font-family:'Nanum Gothic',나눔고딕,'Malgun Gothic',맑은고딕,UnDotum,Dotum,Arial,Sans;
+  }
+pre, code {
+    font-family: Monospace;
+}
+body {
+    width:100%;
+    text-align:left;
+}
+#content {
+    margin-top: 30px;
+}
+#content h1.title{ }
+#content h1 { margin-bottom: 30px }
+#content h2, #content h3, #content h4, #content h5, #content h6 { line-height: 250%; }
+#content a {
+    font-weight: bold;
+    text-decoration: none !important; 
+}
+#content a:hover {
+    text-decoration: underline !important;
+}
+#content p {
+    line-height: 150%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#content p img {
+    margin : 0.5em 0.5em 0.5em 0.5em;
+    border: 1px solid white;
+}
+#content code {
+    color: black;
+}
+#content pre {
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    border: 1px dashed white;
+    padding: 10px;
+    overflow: auto;
+}
+#content ul, #content ol {
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#content li {
+    line-height: 150%;
+}
+#content em {
+    text-decoration: underline;
+    font-weight: bold;
+}
+#content blockquote {
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    border: 1px dashed white;
+    padding: 10px;
+    font-style: italic;
+}
+

@@ -1,4 +1,4 @@
-title: 펄 "석가탄신일" 달력 2011
+title: 펄 석가탄신일 달력 2011
 navi_name: 2011
 
 
@@ -16,7 +16,7 @@ navi_name: 2011
 </div>
 </br>
 <div class="row">
-<div class="span2 well lotusbox"><a rel="first day, 아직 없음" href="2011/1.html">1</a></div>
+<div class="span2 well lotusbox"><a rel="첫째날 : 펄을 이용한 그림 파일 긁어오기" href="2011/1.html">1</a></div>
 <div class="span2 well lotusbox">2</div>
 <div class="span2 well lotusbox">3</div>
 <div class="span2 well lotusbox">4</div>
@@ -36,3 +36,8 @@ navi_name: 2011
 
 ---
 ![lotus0](https://lh3.googleusercontent.com/-hp37zclSBzA/T7NTSgfV5xI/AAAAAAAAAUY/EA_qE5NHZww/s600/lotus1.jpg)
+
+---
+<div class="row">
+<div class="span8 well"><a rel="첫째날 : 펄을 이용한 그림 파일 긁어오기" href="2011/1.html">첫째날 : 펄을 이용한 그림 파일 긁어오기</a></div>
+</div>
