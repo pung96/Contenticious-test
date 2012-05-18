@@ -19,7 +19,7 @@
       }
     </style>
     <%= stylesheet 'css/bootstrap-responsive.min.css' %>
-    %= stylesheet 'css/style.css'
+    %= stylesheet 'css/style_adv2.css'
     %# TOOL TIP
     %#= javascript 'js/bootstrap-tooltip.js'
     %# Code Highlighter
