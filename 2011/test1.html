@@ -12,14 +12,11 @@
         padding-bottom: 40px;
       }
       .sidebar-nav {
-        padding: 9px 0;
-      }
-      #content p{
-        font-size:20px;
-        line-height:25px;
+        //padding: 9px 0;
       }
     </style>
     <link href="../css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="../syntax/scripts/shCore.js" type="text/javascript"></script>
     <script src="../syntax/scripts/shBrushPerl.js" type="text/javascript"></script>
     <script src="../syntax/scripts/shBrushBash.js" type="text/javascript"></script>
@@ -136,8 +133,6 @@ sub get\_last\_num {
 }
 </pre>
 
-<p></code></p>
-
 <p>'ls -1 ./' 을 하면 아래와 같은 결과가 나옵니다.(이미 한 번 실행해서 이미지를 저장한 상태라고 했을 때 결과입니다.)
 img_0000.jpg
 img_0001.jpg
@@ -168,15 +163,13 @@ img_9999.jpg</p>
 
 <p>해당 소스의 구동에 대해 제게 묻지 말아주세요. a3ro 님 코드인데 왜 저렇게 되는지 이해를 못하고 있습니다. 그냥 되니까 갖다 쓰는 중. ^^;;</p>
 
-<pre><code>
+<pre class="brush: perl">
 sub get\_last\_num {
 my @a = glob("img\_\*");
 my $last = ( sort { $a <=> $b } map { m/(\d+)/ } @a )[-1];
 return ++$last;
 }
 </pre>
-
-<p></code></p>
 
 <p>성능은 놀랍게도 시스템 명령어 사용한 쪽이 빠릅니다.(시스템 명령어 사용시 100ms, 펄로 구현시 400ms)
 시스템 명령어는 glob 과정 없이 모든 결과를 바로 정렬하기 때문인 것 같습니다. 다만 그림 파일 이외에 다른 파일이 섞여 있을 때 잘못된 결과값이 나올 수 있습니다.</p>
@@ -201,7 +194,7 @@ if unless 등으로 확장자를 하나씩 찾아줬습니다.</p>
 
 <p>img_0000.jpg 저장한 이후에 아래 코드를 추가한 후</p>
 
-<pre><code>
+<pre class="brush: perl">
 my $final\_name = file\_type\_check($file);
 rename $file, $final\_name;
 </pre>
