@@ -19,7 +19,6 @@
       }
     </style>
     <%= stylesheet 'css/bootstrap-responsive.min.css' %>
-    %= stylesheet 'css/style_adv2.css'
     %# TOOL TIP
     %#= javascript 'js/bootstrap-tooltip.js'
     %# Code Highlighter
@@ -27,8 +26,9 @@
     %= javascript 'syntax/scripts/shBrushPerl.js'
     %= javascript 'syntax/scripts/shBrushBash.js'
     %= stylesheet 'syntax/styles/shCore.css'
-    %= stylesheet 'syntax/styles/shThemeDefault.css'
+    %= stylesheet 'syntax/styles/shThemeMidnight.css'
     
+    %= stylesheet 'css/style_adv2.css'
 
   </head>
   <body>
