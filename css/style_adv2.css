@@ -139,7 +139,8 @@ body {
     border: 1px solid white;
 }
 #content code {
-    color: yellow;
+    //color: yellow;
+    background-color:#eee;
 }
 #content pre {
     margin-left: 50px;
@@ -150,6 +151,7 @@ body {
     padding: 10px;
     overflow: auto;
 }
+
 #content ul, #content ol {
     margin-left: 50px;
     margin-top: 20px;
