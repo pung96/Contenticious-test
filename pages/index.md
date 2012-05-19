@@ -1,9 +1,12 @@
 Title: 펄 석가탄신일 달력 
 navi_name: HOME
+node_type: page
 
 <div class="row">
-<div class="span8 well">
-<h1> 펄 석가탄신일 달력</h1?
+<div class="span8 well" >
+<h1> 펄 석가탄신일 달력</h1>
+펄 석가탄신일 달력
+==================
 
 </div> 
 </div>

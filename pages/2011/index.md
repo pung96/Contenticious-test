@@ -1,5 +1,6 @@
 title: 펄 석가탄신일 달력 2011
 navi_name: 2011
+node_type: page
 
 
 <style type="text/css">
@@ -43,5 +44,13 @@ navi_name: 2011
 
 ---
 <div class="row">
-<div class="span8 well"><a rel="첫째날 : 펄을 이용한 그림 파일 긁어오기" href="2011/1.html">첫째날 : 펄을 이용한 그림 파일 긁어오기</a></div>
+<div class="span8 well">
+% foreach my $c (@{$node->children}) {
+  % next if $c->name eq 'index';
+  % next if $c->name =~ /^_/;
+  % next if $c->name =~ /^test/;
+  % my $url = url_for 'content', cpath => $c->path, format => 'html';
+  <a href="<%= $url %>"><%= $c->title %></a>
+% }
+
 </div>

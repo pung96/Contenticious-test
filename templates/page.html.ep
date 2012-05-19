@@ -1,0 +1,8 @@
+% layout 'contenticious', title => $content_node->title;
+% if (defined $content_node->html) {
+%== $self->render(inline=>$content_node->html, node=>$content_node, partial => 1);
+%#== $self->render(inline=>$content_node->html, handler => 'epl', node=>$content_node,  partial => 1);
+% } else {
+%= include 'list', content_node => $content_node
+% }
+
