@@ -79,7 +79,8 @@
         <!-- ========== BODY  ============ -->
         <div class="span9">
           <div id="content">
-            <h1>첫째날 : 펄을 이용한 그림 파일 긁어오기.</h1>
+            <div>
+<h1>첫째날 : 펄을 이용한 그림 파일 긁어오기.</h1>
 
 <p>글쓴이 : 나무아미타불</p>
 
@@ -125,11 +126,13 @@ sub get\_last\_num {
     my @unsorted\_imgs = `ls -1 ./ | sort -t \_ -k 2 -n`;
     my $lastnum;
 
-    $lastnum = $unsorted\_imgs[-1];
-    $lastnum =~ s|img\_(.+)\....|$1|g;
+<pre><code>$lastnum = $unsorted\_imgs[-1];
+$lastnum =~ s|img\_(.+)\....|$1|g;
 
-    $lastnum =~ s|\n||g;
-    return ++$lastnum;
+$lastnum =~ s|\n||g;
+return ++$lastnum;
+</code></pre>
+
 }
 </pre>
 
@@ -159,7 +162,7 @@ img_9999.jpg</p>
 
 <p>앞에서 부터 비교해서 정렬하기 때문에 사람이 생각했을 때 숫자 정렬과 다른 결과가 나옵니다. 그래서 -n 옵션을 붙이죠.</p>
 
-<h3>순수 펄로 구현한 get_last_num</h3>
+<h3 id="get_last_num">순수 펄로 구현한 get_last_num</h3>
 
 <p>해당 소스의 구동에 대해 제게 묻지 말아주세요. a3ro 님 코드인데 왜 저렇게 되는지 이해를 못하고 있습니다. 그냥 되니까 갖다 쓰는 중. ^^;;</p>
 
@@ -204,34 +207,38 @@ rename $file, $final\_name;
 <p>file_type_check 함수를 추가합니다.</p>
 
 <pre><code>
-#저장한 파일 타입(png, gif, bmp, jpg)를 확인해서 확장자 바꾼 파일명을 반환
+<h1 id="pnggifbmpjpg">저장한 파일 타입(png, gif, bmp, jpg)를 확인해서 확장자 바꾼 파일명을 반환</h1>
+
 sub file\_type\_check {
-#   my $file = shift;
-    my ($file) = @\_;
-    my $ext;
-    my $ft = File::Type->new();
+<h1 id="myfileshift">my $file = shift;</h1>
 
-    $ext= $ft->checktype\_filename($file);
-    $ext=~ s|image/||g;
+<pre><code>my ($file) = @\_;
+my $ext;
+my $ft = File::Type-&gt;new();
 
-    if ( $ext =~ /gif/ ) {
-        unless ( $file =~ /\.gif/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.gif|g;
-        }
-        return $file;
-    } elsif ( $ext =~ /x-png/ ) {
-        unless ( $file =~ /\.png/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.png|g;
-        }
-        return $file;
-    } elsif ( $ext =~ /x-bmp/ ) {
-        unless ( $file =~ /\.bmp/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.bmp|g;
-        }
-        return $file;
-    } else {
-        return $file;
+$ext= $ft-&gt;checktype\_filename($file);
+$ext=~ s|image/||g;
+
+if ( $ext =~ /gif/ ) {
+    unless ( $file =~ /\.gif/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.gif|g;
     }
+    return $file;
+} elsif ( $ext =~ /x-png/ ) {
+    unless ( $file =~ /\.png/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.png|g;
+    }
+    return $file;
+} elsif ( $ext =~ /x-bmp/ ) {
+    unless ( $file =~ /\.bmp/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.bmp|g;
+    }
+    return $file;
+} else {
+    return $file;
+}
+</code></pre>
+
 }
 </pre>
 
@@ -278,12 +285,14 @@ sub get\_image\_links {
     eval { $response = $page\_scrap->scrape( URI->new($url) ); };
     warn $@ if $@;
 
-    for my $link ( @{ $response->{link} } ) {
-        next unless $link =~ /bbs=$/;
-        push @links, $link;
-    }
+<pre><code>for my $link ( @{ $response-&gt;{link} } ) {
+    next unless $link =~ /bbs=$/;
+    push @links, $link;
+}
 
-    return \@links;
+return \@links;
+</code></pre>
+
 }
 </pre>
 
@@ -303,13 +312,15 @@ sub get\_image\_links {
     my $response = $mech->content;
     my @urls = $response =~ m/img\_icon\.jpg.\*&lt;a href=\"(.\*bbs=)\"/g;
 
-    foreach my $link ( @urls ) {
-        $link = 'http://gall.dcinside.com' . "$link";
-        next unless $link =~ /bbs=$/;
-        push @links, $link;
-    }
+<pre><code>foreach my $link ( @urls ) {
+    $link = 'http://gall.dcinside.com' . "$link";
+    next unless $link =~ /bbs=$/;
+    push @links, $link;
+}
 
-    return \@links;
+return \@links;
+</code></pre>
+
 }
 </pre>
 
@@ -414,25 +425,27 @@ foreach (@img\_file) {
     my $work\_file = $img\_file[$count];
     chomp $work\_file;
 
-    # md5 파일명 구해오는 함수
-    #    my $md5\_name = &get\_md5($work\_file);  # 이 방식은 옛날 방식입니다. 아래처럼 하는 것이 낫다고 합니다.
-    my $md5\_name = get\_md5($work\_file);
+<pre><code># md5 파일명 구해오는 함수
+#    my $md5\_name = &amp;get\_md5($work\_file);  # 이 방식은 옛날 방식입니다. 아래처럼 하는 것이 낫다고 합니다.
+my $md5\_name = get\_md5($work\_file);
 
-    # md5 이름으로 complete 디렉토리에 해당 파일이 있는지 체크.
-    # 있으면 dup 디렉토리로 이동하고
-    # 없으면 이름 바꿔서 complete 디렉토리로 이동
-    # 필요는 없으나 hashdb.txt에 내용 추가
-    if ( -e "complete/$md5\_name" ){
-        print "$md5\_name $work\_file is exist.\n";
-        move($work\_file, "dup/$work\_file");
-        print $dup\_hash "\n$work\_file";
+# md5 이름으로 complete 디렉토리에 해당 파일이 있는지 체크.
+# 있으면 dup 디렉토리로 이동하고
+# 없으면 이름 바꿔서 complete 디렉토리로 이동
+# 필요는 없으나 hashdb.txt에 내용 추가
+if ( -e "complete/$md5\_name" ){
+    print "$md5\_name $work\_file is exist.\n";
+    move($work\_file, "dup/$work\_file");
+    print $dup\_hash "\n$work\_file";
 
-    } else {
-        print "$md5\_name $work\_file is no exist, save file\n";
-        move($work\_file, "complete/$md5\_name");
-        print $hashdb "\n$md5\_name";
-    }
-    $count++;
+} else {
+    print "$md5\_name $work\_file is no exist, save file\n";
+    move($work\_file, "complete/$md5\_name");
+    print $hashdb "\n$md5\_name";
+}
+$count++;
+</code></pre>
+
 }
 close $hashdb;
 close $dup\_hash;
@@ -440,20 +453,22 @@ close $dup\_hash;
 sub get\_md5 {
     # 인자로 받은 파일의 MD5 구해서 complete/md5 에 파일이 있는지 확인
 
-    my $wf = shift; # 인자로 넘어온 $work\_file 저장
-    my $ext = $wf;
-    $ext =~ s/img\_\d+(\....)/$1/g;
+<pre><code>my $wf = shift; # 인자로 넘어온 $work\_file 저장
+my $ext = $wf;
+$ext =~ s/img\_\d+(\....)/$1/g;
 
 
-    my $md5 = Digest::MD5->new;
-    my $hashdb = 'hashdb.txt';
-    open my $md5\_fh, "<", $wf;
-    $md5->addfile($md5\_fh);
-    my $digest = $md5->hexdigest;
-    close $md5\_fh;
+my $md5 = Digest::MD5-&gt;new;
+my $hashdb = 'hashdb.txt';
+open my $md5\_fh, "&lt;", $wf;
+$md5-&gt;addfile($md5\_fh);
+my $digest = $md5-&gt;hexdigest;
+close $md5\_fh;
 
-    $digest .= $ext;
-    return $digest;
+$digest .= $ext;
+return $digest;
+</code></pre>
+
 }
 </pre>
 
@@ -494,11 +509,13 @@ for my $current\_page\_num ( $start\_page\_num .. $last\_page\_num ) {
     );
     my $links = get\_image\_links($g\_name);
 
-    # delete Notice :D
-    if ( $current\_page\_num == 1 ) {
-        shift( @{$links} ) for ( 1 .. 3 );
-    }
-    download($links);
+<pre><code># delete Notice :D
+if ( $current\_page\_num == 1 ) {
+    shift( @{$links} ) for ( 1 .. 3 );
+}
+download($links);
+</code></pre>
+
 }
 
 sub get\_image\_links {
@@ -511,54 +528,58 @@ sub get\_image\_links {
     my @urls = $response =~ m/a href=\"(.\*)\".\*image\_up\.gif/g;
 
 
-    foreach my $link ( @urls ) {
-        $link = 'http://rgr.kr/bbs/' . "$link";
-        next unless $link =~ /view\.php/;
-        push @links, $link;
-    }
+<pre><code>foreach my $link ( @urls ) {
+    $link = 'http://rgr.kr/bbs/' . "$link";
+    next unless $link =~ /view\.php/;
+    push @links, $link;
+}
 
-    return \@links;
+return \@links;
+</code></pre>
+
 }
 
 sub download {
 \#   my $links = shift;
     my ($links) = @\_;
 
-    for my $article\_link ( @{$links} ) {
-        my $response;
-        eval { $response = $bbs\_scrap->scrape( URI->new($article\_link) ); };
-        if ($@) {
-            warn $@;
-            next;
-        }
-        for my $img\_link ( @{ $response->{imglink} } ) {
-            if ( $img\_link =~ m|rgr.kr/bbs/data/rgr201204/| ) {
-                print $img\_link . "\n";
-
-                my $ua = LWP::UserAgent->new( agent =>
-                'Mozilla/5.0'
-                .' (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1)'
-                .' Gecko/20091014 Firefox/3.6b1 GTB5'
-        );
-                my $res;
-                eval { $res = $ua->get($img\_link); };
-                if ($@) {
-                    warn $@;
-                    next;
-                }
-
-                my $file = sprintf 'img\_%04d.jpg', ++$file\_num;
-                open my $fh, ">", $file;
-
-                binmode $fh;
-                print $fh $res->content;
-                close $fh;
-
-        my $final\_name = file\_type\_check($file);
-        rename $file, $final\_name;
-           }
-        }
+<pre><code>for my $article\_link ( @{$links} ) {
+    my $response;
+    eval { $response = $bbs\_scrap-&gt;scrape( URI-&gt;new($article\_link) ); };
+    if ($@) {
+        warn $@;
+        next;
     }
+    for my $img\_link ( @{ $response-&gt;{imglink} } ) {
+        if ( $img\_link =~ m|rgr.kr/bbs/data/rgr201204/| ) {
+            print $img\_link . "\n";
+
+            my $ua = LWP::UserAgent-&gt;new( agent =&gt;
+            'Mozilla/5.0'
+            .' (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1)'
+            .' Gecko/20091014 Firefox/3.6b1 GTB5'
+    );
+            my $res;
+            eval { $res = $ua-&gt;get($img\_link); };
+            if ($@) {
+                warn $@;
+                next;
+            }
+
+            my $file = sprintf 'img\_%04d.jpg', ++$file\_num;
+            open my $fh, "&gt;", $file;
+
+            binmode $fh;
+            print $fh $res-&gt;content;
+            close $fh;
+
+    my $final\_name = file\_type\_check($file);
+    rename $file, $final\_name;
+       }
+    }
+}
+</code></pre>
+
 }
 
 \#이미 저장된 파일 중 숫자 끝자리에 +1 더한 값 반환함.
@@ -566,11 +587,13 @@ sub get\_last\_num {
     my @unsorted\_imgs = `ls -1 dup/ | sort -t \_ -k 2 -n`;
     my $lastnum;
 
-    $lastnum = $unsorted\_imgs[-1];
-    $lastnum =~ s|img\_(.+)\....|$1|g;
+<pre><code>$lastnum = $unsorted\_imgs[-1];
+$lastnum =~ s|img\_(.+)\....|$1|g;
 
-    $lastnum =~ s|\n||g;
-    return ++$lastnum;
+$lastnum =~ s|\n||g;
+return ++$lastnum;
+</code></pre>
+
 }
 
 
@@ -581,27 +604,29 @@ sub file\_type\_check {
     my $ext;
     my $ft = File::Type->new();
 
-    $ext= $ft->checktype\_filename($file);
-    $ext=~ s|image/||g;
+<pre><code>$ext= $ft-&gt;checktype\_filename($file);
+$ext=~ s|image/||g;
 
-    if ( $ext =~ /gif/ ) {
-        unless ( $file =~ /\.gif/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.gif|g;
-        }
-        return $file;
-    } elsif ( $ext =~ /x-png/ ) {
-        unless ( $file =~ /\.png/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.png|g;
-        }
-        return $file;
-    } elsif ( $ext =~ /x-bmp/ ) {
-        unless ( $file =~ /\.bmp/ ) {
-            $file =~ s|(img\_\d+)\.jpg|$1\.bmp|g;
-        }
-        return $file;
-    } else {
-        return $file;
+if ( $ext =~ /gif/ ) {
+    unless ( $file =~ /\.gif/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.gif|g;
     }
+    return $file;
+} elsif ( $ext =~ /x-png/ ) {
+    unless ( $file =~ /\.png/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.png|g;
+    }
+    return $file;
+} elsif ( $ext =~ /x-bmp/ ) {
+    unless ( $file =~ /\.bmp/ ) {
+        $file =~ s|(img\_\d+)\.jpg|$1\.bmp|g;
+    }
+    return $file;
+} else {
+    return $file;
+}
+</code></pre>
+
 }
 </pre>
 
@@ -659,14 +684,16 @@ sub get\_image\_links {
     $response = $mech->content;
     my @urls = $response =~ m|(/comicView\.htm\?cid=35&cno=\d+&nPage=\d+).\*list\_today|g;
 
-    foreach my $link ( @urls ) {
-        $link = "http://comic.mt.co.kr$link";
-        push @links, $link;
-        $link = "$link&cpg=2";
-        push @links, $link;
-     }
+<pre><code>foreach my $link ( @urls ) {
+    $link = "http://comic.mt.co.kr$link";
+    push @links, $link;
+    $link = "$link&amp;cpg=2";
+    push @links, $link;
+ }
 
-    return \@links;
+return \@links;
+</code></pre>
+
 }
 
 sub download {
@@ -674,29 +701,31 @@ sub download {
     my @img\_urls;
     my $img\_name;
 
-    for my $article\_link ( @{$links} ) {
-        print "$article\_link\n";
-        $mech->get($article\_link);
-        my $response = $mech->content;
-        @img\_urls = $response =~ m|\"(http://comicmenu\.mt\.co\.kr/list/.\*list\_original.\*)\" onMouseDown|g;
+<pre><code>for my $article\_link ( @{$links} ) {
+    print "$article\_link\n";
+    $mech-&gt;get($article\_link);
+    my $response = $mech-&gt;content;
+    @img\_urls = $response =~ m|\"(http://comicmenu\.mt\.co\.kr/list/.\*list\_original.\*)\" onMouseDown|g;
 
-        foreach my $img\_url ( @img\_urls ) {
-            print "$img\_url\n";
-            $img\_name = $img\_url;
-            $img\_name =~ s|.\*/list/(.\*\.jpg)|$1|g;
-            unless ( -e $img\_name ) {
-                print "$img\_name\n";
-                $mech->get($img\_url);
-                open my $fh, ">", $img\_name;
-                binmode $fh;
-                print $fh $mech->content;
-                close $fh;
-            } else {
-                print "pass\n";
-                exit;
-            }
+    foreach my $img\_url ( @img\_urls ) {
+        print "$img\_url\n";
+        $img\_name = $img\_url;
+        $img\_name =~ s|.\*/list/(.\*\.jpg)|$1|g;
+        unless ( -e $img\_name ) {
+            print "$img\_name\n";
+            $mech-&gt;get($img\_url);
+            open my $fh, "&gt;", $img\_name;
+            binmode $fh;
+            print $fh $mech-&gt;content;
+            close $fh;
+        } else {
+            print "pass\n";
+            exit;
         }
     }
+}
+</code></pre>
+
 }
 </pre>
 
@@ -747,14 +776,16 @@ sub get\_image\_links {
     $response = $mech->content;
     my @urls = $response =~ m|(/comicView\.htm\?cid=17&cno=\d+&nPage=\d+).\*list\_today|g;
 
-    foreach my $link ( @urls ) {
-        $link = "http://comic.mt.co.kr$link";
-        push @links, $link;
-        $link = "$link&cpg=2";
-        push @links, $link;
-     }
+<pre><code>foreach my $link ( @urls ) {
+    $link = "http://comic.mt.co.kr$link";
+    push @links, $link;
+    $link = "$link&amp;cpg=2";
+    push @links, $link;
+ }
 
-    return \@links;
+return \@links;
+</code></pre>
+
 }
 
 sub download {
@@ -762,29 +793,31 @@ sub download {
     my @img\_urls;
     my $img\_name;
 
-    for my $article\_link ( @{$links} ) {
-        print "$article\_link\n";
-        $mech->get($article\_link);
-        my $response = $mech->content;
-        @img\_urls = $response =~ m|\"(http://comicmenu\.mt\.co\.kr/list/.\*list\_original.\*)\" onMouseDown|g;
+<pre><code>for my $article\_link ( @{$links} ) {
+    print "$article\_link\n";
+    $mech-&gt;get($article\_link);
+    my $response = $mech-&gt;content;
+    @img\_urls = $response =~ m|\"(http://comicmenu\.mt\.co\.kr/list/.\*list\_original.\*)\" onMouseDown|g;
 
-        foreach my $img\_url ( @img\_urls ) {
-            print "$img\_url\n";
-            $img\_name = $img\_url;
-            $img\_name =~ s|.\*/list/(.\*\.jpg)|$1|g;
-            unless ( -e $img\_name ) {
-                print "$img\_name\n";
-                $mech->get($img\_url);
-                open my $fh, ">", $img\_name;
-                binmode $fh;
-                print $fh $mech->content;
-                close $fh;
-            } else {
-                print "pass\n";
-                exit;
-            }
+    foreach my $img\_url ( @img\_urls ) {
+        print "$img\_url\n";
+        $img\_name = $img\_url;
+        $img\_name =~ s|.\*/list/(.\*\.jpg)|$1|g;
+        unless ( -e $img\_name ) {
+            print "$img\_name\n";
+            $mech-&gt;get($img\_url);
+            open my $fh, "&gt;", $img\_name;
+            binmode $fh;
+            print $fh $mech-&gt;content;
+            close $fh;
+        } else {
+            print "pass\n";
+            exit;
         }
     }
+}
+</code></pre>
+
 }
 </pre>
 
@@ -822,30 +855,34 @@ foreach my $page\_num ( 583 .. 585 ) {
         $page,
     );
 
-    foreach $num ( 1 .. 9 ) {
-        my $img\_url = sprintf(
-            "$g\_name%s",
-            "$num.gif",
-        );
-        print "$img\_url\n";
-        download($img\_url, $page, $num);
-    }
+<pre><code>foreach $num ( 1 .. 9 ) {
+    my $img\_url = sprintf(
+        "$g\_name%s",
+        "$num.gif",
+    );
+    print "$img\_url\n";
+    download($img\_url, $page, $num);
+}
+</code></pre>
+
 }
 
 sub download {
     my ($get\_url, $page, $num) = @\_;
     my $res;
 
-    my $img\_name = $page . '\_' . $num . '.gif';
-    if ( -e $img\_name ) {
-        print "$img\_name exsist\n";
-    } else {
-        print "get $img\_name\n";
-        $mech->get($get\_url);
-        open my $fh, ">", $img\_name;
-        binmode $fh;
-        print $fh $mech->content;
-        close $fh;
+<pre><code>my $img\_name = $page . '\_' . $num . '.gif';
+if ( -e $img\_name ) {
+    print "$img\_name exsist\n";
+} else {
+    print "get $img\_name\n";
+    $mech-&gt;get($get\_url);
+    open my $fh, "&gt;", $img\_name;
+    binmode $fh;
+    print $fh $mech-&gt;content;
+    close $fh;
+</code></pre>
+
 \#       sleep 1;
     }
 }
@@ -862,6 +899,7 @@ sub download {
 <p>갬블파티가 그런 예인데, 다행히 그림 파일 이름 명명 방식에 규칙이 있어서(하루에 1.gif ~ 9.gif) 그냥 그림 파일 주소를 요청해 다운 받았습니다.</p>
 
 <p>관세음보살</p>
+</div>
 
 
           </div><!-- content -->
