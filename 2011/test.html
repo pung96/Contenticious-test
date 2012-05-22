@@ -68,33 +68,6 @@
               <li><a href="http://perlmania.or.kr/drupal/">펄마니아</a></li>
               <li><a href="http://cafe.naver.com/perlstudy.cafe">네이버 펄 까페</a></li>
             </ul>
-            <style>
-  .post_share_btnitem { padding:5px 5px 5px 10px; }
-</style>
-
-<div class="post_share_btnitem">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" >Tweet</a>
-</div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<div class="post_share_btnitem">
-  <div class="fb-like" data-href="http://lotus.perl.kr" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div>
-</div>
-
-<div class="post_share_btnitem">
-<!-- +1 버튼이 렌더링되기를 원하는 곳에 이 태그를 넣습니다. -->
-<g:plusone size="medium" annotation="inline" width="200"></g:plusone>
-
-<!-- 적절한 곳에 이 렌더링 호출을 넣습니다. -->
-<script type="text/javascript">
-  (function() {
-   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-   po.src = 'https://apis.google.com/js/plusone.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-   })();
-</script>
-</div>
-
             <script type="text/javascript" src="http://lotustest.disqus.com/combination_widget.js?num_items=2&hide_mods=0&color=black&default_tab=recent&excerpt_length=200"></script><a href="http://disqus.com/">Powered by Disqus</a>
             <script type="text/javascript" src="http://feedjit.com/serve/?vv=955&amp;tft=3&amp;dd=0&amp;wid=6f9dae7dfcc3e986&amp;pid=0&amp;proid=0&amp;bc=FFFFFF&amp;tc=000000&amp;brd1=012B6B&amp;lnk=135D9E&amp;hc=FFFFFF&amp;hfc=2853A8&amp;btn=C99700&amp;ww=200&amp;went=10"></script><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
           </div><!--/.well -->
@@ -137,6 +110,35 @@ sub my_function{
 </div>
 
         </div><!--/span-->
+        <div class="span1">
+          <style>
+  .post_share_btnitem { padding:5px 5px 5px 10px;float:left; }
+</style>
+
+<div class="post_share_btnitem">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div class="post_share_btnitem">
+  <div class="fb-like" data-href="http://lotus.perl.kr" data-send="false" data-layout="box_count" data-width="200" data-show-faces="false"></div>
+</div>
+
+<div class="post_share_btnitem">
+  <!-- +1 버튼이 렌더링되기를 원하는 곳에 이 태그를 넣습니다. -->
+  <g:plusone size="tall"></g:plusone>
+
+  <!-- 적절한 곳에 이 렌더링 호출을 넣습니다. -->
+  <script type="text/javascript">
+    (function() {
+     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+     po.src = 'https://apis.google.com/js/plusone.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+   </script>
+ </div>
+
+        </div>
       </div><!--/row-->
       <!-- ========== FOOTER  ============ -->
       <hr>
