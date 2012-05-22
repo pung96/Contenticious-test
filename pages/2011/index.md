@@ -2,7 +2,8 @@ title: 펄 석가탄신일 달력 2011
 navi_name: 2011
 node_type: page
 
-
+% my %children ;
+% my $subnode = sub { $_[0] };
 <style type="text/css">
 .lotusbox {
   text-align:center;
@@ -17,22 +18,22 @@ node_type: page
 </div>
 </br>
 <div class="row">
-<div class="span2 well lotusbox"><a rel="첫째날 : 펄을 이용한 그림 파일 긁어오기" href="2011/1.html">1</a></div>
-<div class="span2 well lotusbox">2</div>
-<div class="span2 well lotusbox">3</div>
-<div class="span2 well lotusbox">4</div>
+<div class="span2 well lotusbox"><%=$subnode->(1)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(2)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(3)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(4)%></div>
 </div>
 <div class="row">
-<div class="span2 well lotusbox">5</div>
-<div class="span2 well lotusbox">6</div>
-<div class="span2 well lotusbox">7</div>
-<div class="span2 well lotusbox">8</div>
+<div class="span2 well lotusbox"><%=$subnode->(5)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(6)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(7)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(8)%></div>
 </div>
 <div class="row">
-<div class="span2 well lotusbox">9</div>
-<div class="span2 well lotusbox">10</div>
-<div class="span2 well lotusbox">11</div>
-<div class="span2 well lotusbox">12</div>
+<div class="span2 well lotusbox"><%=$subnode->(9)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(10)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(11)%></div>
+<div class="span2 well lotusbox"><%=$subnode->(12)%></div>
 </div>
 
 ---
@@ -45,12 +46,4 @@ node_type: page
 ---
 <div class="row">
 <div class="span8 well">
-% foreach my $c (@{$node->children}) {
-  % next if $c->name eq 'index';
-  % next if $c->name =~ /^_/;
-  % next if $c->name =~ /^test/;
-  % my $url = url_for 'content', cpath => $c->path, format => 'html';
-  <a href="<%= $url %>"><%= $c->title %></a>
-% }
-
 </div>
