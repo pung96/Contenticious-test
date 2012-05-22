@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>펄 석가탄신일 달력  - PERL.KR LOTUS Calendar</title>
+    <title>PERL.KR LOTUS Calendar</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,7 +21,7 @@
     <script src="syntax/scripts/shBrushBash.js" type="text/javascript"></script>
     <link href="syntax/styles/shCore.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="syntax/styles/shThemeMidnight.css" media="screen" rel="stylesheet" type="text/css" />
-    
+
     <link href="css/style_adv2.css" media="screen" rel="stylesheet" type="text/css" />
 
   </head>
@@ -64,12 +64,36 @@
               <li><a href="http://webchat.freenode.net/?channels=perl-kr">#perl-kr IRC 챗팅</a></li>
               <li><a href="http://perlmania.or.kr/drupal/">펄마니아</a></li>
               <li><a href="http://cafe.naver.com/perlstudy.cafe">네이버 펄 까페</a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
             </ul>
-          <script type="text/javascript" src="http://lotustest.disqus.com/combination_widget.js?num_items=5&hide_mods=0&color=black&default_tab=recent&excerpt_length=200"></script><a href="http://disqus.com/">Powered by Disqus</a>
+            <style>
+  .post_share_btnitem { padding:5px 5px 5px 10px; }
+</style>
+
+<div class="post_share_btnitem">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" >Tweet</a>
+</div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<div class="post_share_btnitem">
+  <div class="fb-like" data-href="http://lotus.perl.kr" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+</div>
+
+<div class="post_share_btnitem">
+<!-- +1 버튼이 렌더링되기를 원하는 곳에 이 태그를 넣습니다. -->
+<g:plusone size="medium" annotation="inline" width="200"></g:plusone>
+
+<!-- 적절한 곳에 이 렌더링 호출을 넣습니다. -->
+<script type="text/javascript">
+  (function() {
+   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+   po.src = 'https://apis.google.com/js/plusone.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+   })();
+</script>
+</div>
+
+            <script type="text/javascript" src="http://lotustest.disqus.com/combination_widget.js?num_items=2&hide_mods=0&color=black&default_tab=recent&excerpt_length=200"></script><a href="http://disqus.com/">Powered by Disqus</a>
+            <script type="text/javascript" src="http://feedjit.com/serve/?vv=955&amp;tft=3&amp;dd=0&amp;wid=6f9dae7dfcc3e986&amp;pid=0&amp;proid=0&amp;bc=FFFFFF&amp;tc=000000&amp;brd1=012B6B&amp;lnk=135D9E&amp;hc=FFFFFF&amp;hfc=2853A8&amp;btn=C99700&amp;ww=200&amp;went=10"></script><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
           </div><!--/.well -->
 
         </div><!--/span-->
@@ -77,44 +101,203 @@
         <div class="span9">
           <div id="content">
             <div>
-<div class="row">
-<div class="span8 well" >
-<h1> 펄 석가탄신일 달력</h1>
-<h1>펄 석가탄신일 달력</h1>
+<h1 id="perl">perl 환경구축 최단코스</h1>
 
-</div> 
-</div>
+<h2>저자</h2>
 
-<p><img src="https://lh4.googleusercontent.com/-A6It3I1_hKA/T7NenEH4ZlI/AAAAAAAAAUk/siEFMsSzAl0/s400/lotus2.jpg" alt="lotus2" id="lotus2" /></p>
+<p><a href="https://twitter.com/pung96">@pung96</a> - 물리학과 박사과정 학생. 현재 핀란드에 거주하면 스위스 제네바에 있는 LHC관련 연구를 진행중이다. 펄은 C++ 를 사용하다 지칠때 마음이 여유를 주기 위해 즐기는 정도. </p>
 
-<p><img src="https://lh3.googleusercontent.com/-hp37zclSBzA/T7NTSgfV5xI/AAAAAAAAAUY/EA_qE5NHZww/s400/lotus1.jpg" alt="lotus1" id="lotus1" />
-<br/></p>
+<h2>시작하며</h2>
+
+<p>root 권한없이 모듈을 자유롭게 설치하고 싶다거나 여러 환경의 펄 버젼이나 모듈을 관리하고 싶다면 당신은 당신이 찾던 바로 그 글을 보고 있는 것이다. 이 주제는 여러번 되풀이 되었고 매우 훌륭하고 자세한 글들이 있지만, 여기서는 저자의 방법을 이용해 가능한 빠르고 적은 타이핑으로 개인 환경을 구축해보도록 하자. 이 글은 두 부분으로 나뉜다</p>
+
+<ul>
+<li>[cpanm] + [local::lib] : 시스템에 설치된 펄을 이용하여 자신의 모듈을 설치한다.</li>
+<li><a href="#perlbrew" title="perlbrew 설치">perlbrew</a> : 자신만의 perl을 설치(컴파일) 하고 다양한 라이브러리 모음 환경을 설정한다.</li>
+</ul>
+
+<h2 id="cpanmlocal::lib">cpanm + local::lib</h2>
+
+<p>cpanm 과 local::lib 를 이용해 사용자 환경을 구축한다. 일단 설치 과정을 보자.</p>
+
+<h3>설치</h3>
+
+<p>다음 세줄을 실행한다.</p>
+
+<pre class="brush; bash">
+export MYPERL=$HOME/perl5/mydev
+curl -L http://cpanmin.us | perl -I $MYPERL - -l $MYPERL App::cpanminus
+$MYPERL/bin/cpanm -l $MYPERL local::lib
+</pre>
+
+<p>설치가 끝났다면 다음 두줄을 <code>~/.bashrc</code>에 추가한다.</p>
+
+<pre>
+export MYPERL=$HOME/perl5
+function myperl () { S=${1-mydev};eval `perl -I $MYPERL/$S/lib/perl5 -Mlocal::lib=$MYPERL/$S`; }
+</pre>
+
+<p>이제 당신은 <code>mydev</code> 라는 이름의 당신만의 환경을 만들었다."</p>
+
+<h3>사용</h3>
+
+<p>새 창을 열고 쉘(bash 쉘로 가정한다)에서 <code>myperl mydev</code> 을 실행한다.</p>
+
+<pre><code>myperl mydev
+</code></pre>
+
+<p>자 이제 mydev를 사용하기 위한 모든 준비가 끝났다. cpan 을 쓰건 cpanm 을 쓰건 모든 모듈은 myperl 디렉토리 아래에 설치되고 사용될 것이다. </p>
+
+<h3>삭제</h3>
+
+<p>mydev 를 삭제하고 싶다면 $HOME/perl5/mydev 디렉토리를 삭제하면 된다.</p>
+
+<h3>추가</h3>
+
+<p>새로운 환경(myApp)을 설치하고 싶다면 <code>MYPERL</code> 을 바꾼후 cpanm과 local::lib 를 설치한다</p>
+
+<pre class="brush; bash">
+export MYPERL=$HOME/perl5/myapp
+curl -L http://cpanmin.us | perl -I $MYPERL - -l $MYPERL App::cpanminus
+$MYPERL/bin/cpanm -l $MYPERL local::lib
+</pre>
+
+<p><code>~/.bashrc</code> 는 그대로 둔다.
+이제 필요에 따라 두가지 환경을 사용하면 된다.</p>
+
+<pre><code>myperl mydev
+myperl myapp
+</code></pre>
+
+<h2 id="perlbrew">perlbrew</h2>
+
+<h3 id="perlbrew">perlbrew 설치</h3>
+
+<p>먼저 perlbrew 를 <code>$PERLBREW_ROOT</code>에 설치하자</p>
+
+<pre><code>export PERLBREW_ROOT=$HOME/perl5/perlbrew
+curl -kL http://install.perlbrew.pl | bash
+source $PERLBREW_ROOT/etc/bashrc
+perlbrew install-cpanm   
+</code></pre>
+
+<p>perlbrew 설치가 끝났다면 다음 두줄을 <code>~/.bashrc</code> 에 추가한다.</p>
+
+<pre><code>export PERLBREW_ROOT=$HOME/perl5/perlbrew
+alias myperlb='source $PERLBREW_ROOT/etc/bashrc'
+</code></pre>
+
+<p>자 이제 세창을 띄우고 <code>myperlb</code> 를 실행하면 perlbrew 를 사용하기 위한 준비가 끝난다.</p>
+
+<pre><code>myperlb
+</code></pre>
+
+<h3 id="perl">perl 설치</h3>
+
+<pre><code>perlbrew available              # 설치할 수 있는 perl 버젼 확인
+perlbrew install perl-5.14.2    # perl 설치
+</code></pre>
+
+<p>perlbrew 는 펄을 컴파일하기 때문에 잠시 시간이 필요하다.</p>
+
+<h3>라이브러리 모음 추가</h3>
+
+<pre><code>perlbrew lib create perl-5.14.2@mydev   # mydev 라는 라이브러리 모음을 만든다.
+perlbrew lib create perl-5.14.2@myapp   # myapp 라는 라이브러리 모음을 만든다.
+perlbrew switch perl-5.14.2@mydev       # perl-5.14.2@mydev 를 기본 환경으로 설정한다.
+</code></pre>
+
+<h3>사용</h3>
+
+<pre><code>myperlb                     # 기본 라이브러 perl-5.14.2@mydev 사용환경
+perlbrew use perl-5.14.2@mydev          # perl-5.14.2@mydev 를 임시로 사용한다.
+</code></pre>
+
+<p>이제 cpanm 이나 cpan 을 사용하여 원하는 모듈을 설치하고 사용하면 된다. </p>
+
+<h3>삭제</h3>
+
+<p>perl-5.14.2과 기본 라이브러리는 ~/perl5/perlbrew/perls/perl-5.14.2 에 설치되고
+추가로 만든 <code>mydev</code> 와 <code>myapp</code> 는 ~/.perlbrew/lib 아래에 설치된다.</p>
+
+<pre><code>perlbrew lib delete perl-5.14.2@mydev      # 라이브러리 삭제
+perlbrew uninstall  perl-5.14.2            # perl 삭제
+</code></pre>
+
+<h3 id="tip">TIP</h3>
+
+<p><code>alias</code> 대신 <code>function</code> 을 사용하면 </p>
+
+<pre>
+function myperlb () {
+    source $PERLBREW_ROOT/etc/bashrc
+    case "$1" in
+        mydev ) perlbrew use perl-5.14.2@mydev; ;;
+        myapp ) perlbrew use perl-5.14.2@myapp; ;;
+    esac
+    echo "You are using "`perlbrew list | grep '*'`
+}
+</pre>
+
+<p>다음처럼 사용할 수 있다.</p>
+
+<pre><code>myperlb
+myperlb mydev
+myperlb myapp
+</code></pre>
+
+<h2>끝마치며 </h2>
+
+<p>개인적으로 자유도가 높은 perlbrew를 선호하기는 하지만 perlbrew 를 사용할 경우 perl 바이너리의 위치가 <code>/usr/bin/perl</code> 이 아닌 버젼에 따라 <code>~/perl5/perlbrew/perls/perl-5.14.2/bin/perl</code> 같은 형태이기 때문에 코드에서 <code>#!/usr/bin/perl</code> 이 아닌 <code>#!/usr/bin/env perl</code> 를 사용해야만한다.
+문제는 시스템에 설치된 프로그램중 <code>#!/usr/bin/perl</code>를 사용하면서 수정할 수 없는 것들이 있기 때문에
+이경우는 어쩔수 없이 cpanm+local::lib 조합을 사용해야만 한다.  </p>
+
+<h2 id="seealso">See Also</h2>
+
+<ul>
+<li><a href="http://advent.perl.kr/2011/2011-12-16.html">perlbrew, local::lib, smartcd 를 이용하여 Perl 환경 구축하기</a>  by corund</li>
+<li><a href="http://jeen.tistory.com/entry/PerlCPAN-cpanm-이-당신의-Perl-생활을-윤택하게-해드립니다">cpanm 이 당신의 Perl 생활을 윤택하게 해드립니다</a> by jeen</li>
+<li><a href="http://aero.springnote.com/pages/753034">Perl Module 수동 설치</a> by aero</li>
+<li><a href="http://tum.pung96.net/tagged/perl">pung96의 perl 관련 글</a></li>
+<li>[cpanm] in CPAN</li>
+<li>[local::lib] in CPAN</li>
+<li><a href="#perlbrew" title="perlbrew 설치">perlbrew</a> in CPAN</li>
+</ul>
+
+<p><a href="#perlbrew" title="perlbrew 설치">perlbrew</a>:https://metacpan.org/module/perlbrew
+[cpanm]:https://metacpan.org/module/cpanm
+[local::lib]:https://metacpan.org/module/local::lib</p>
 </div>
 
 
           </div><!-- content -->
-           <div id="disqus_thread"></div>
-           <script type="text/javascript">
-             var disqus_shortname = 'lotustest'; // required: replace example with your forum shortname
-               var disqus_identifier = '';
-                 //var disqus_url = '';
-                   (function() {
-                       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                             })();
-                             </script>
-                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                             <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+          <!-- COMMENT -->
+          
+          <!-- FACEBOOK COMMENTS -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=214192832026181";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<div>
+<center>
+<div class="fb-comments" data-href="http://tum.pung96.net/" data-num-posts="3" data-width="600"></div>
+</center>
+</div>
+
         </div><!--/span-->
       </div><!--/row-->
+      <!-- ========== FOOTER  ============ -->
       <hr>
       <footer>
       <p>&copy; Company 2012</p>
       </footer>
     </div><!--/.fluid-container-->
     <script type="text/javascript">
-       SyntaxHighlighter.all()
-    </script>
-  </body>
+      SyntaxHighlighter.all()
+  </script>
+</body>
 </html>
